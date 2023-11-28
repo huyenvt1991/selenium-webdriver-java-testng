@@ -1,5 +1,6 @@
 package webdriver;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Topic_06_WebBrowser_Commands {
     // Các câu lệnh để thao tác với Browser
@@ -49,7 +51,6 @@ public class Topic_06_WebBrowser_Commands {
 
     @Test
     public void TC_01_() {
-        driver.get(element.getAttribute());
         // m - method
         //f - field
         //c - class
@@ -57,7 +58,17 @@ public class Topic_06_WebBrowser_Commands {
         //e - enum
         //a - abstract class
         //@ - annotation
+        WebElement emailAddressTextbox = driver.findElement(By.id("email"));
 
+        // Không được tìm thấy ==> ko bị fail ==> trả về 1 list rỗng (0 element)
+        List<WebElement> checkboxes = driver.findElements(By.xpath(""));
+
+        // Dùng để lấy ra URL của màn hình/ page hiện tại đang đứng
+        driver.getCurrentUrl();
+        driver.getPageSource();
+        driver.getTitle();
+        driver.getWindowHandle();
+        driver.getWindowHandles();
 
 
     }
