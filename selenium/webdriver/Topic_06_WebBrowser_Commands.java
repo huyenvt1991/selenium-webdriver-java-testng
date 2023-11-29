@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -65,7 +66,12 @@ public class Topic_06_WebBrowser_Commands {
 
         // Dùng để lấy ra URL của màn hình/ page hiện tại đang đứng
         driver.getCurrentUrl();
+        Assert.assertTrue(driver.getCurrentUrl().contains(""));
+
+        // Lấy ra page source HTML/CSS/JS của page hiện tại
+        // Thường dùng để verify 1 cách tương đối
         driver.getPageSource();
+
         driver.getTitle();
         driver.getWindowHandle();
         driver.getWindowHandles();
