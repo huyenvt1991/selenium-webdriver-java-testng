@@ -36,8 +36,10 @@ public class Topic_05_Assert {
         driver.findElement(By.id("")).isSelected();
         new Select(driver.findElement(By.id(""))).isMultiple();
 
-        // Mong đợi 1 điều kiện giống với thực tế
-        Assert.assertEquals();
+        // Mong đợi 1 điều kiện giống với thực tế (tuyệt đối)
+        // Actual = Expected
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.facebook.com/");
+        Assert.assertEquals(driver.findElement(By.id("")).getText(), "Create a new account");
 
         // Dùng cho Unit test
         Object name = null;

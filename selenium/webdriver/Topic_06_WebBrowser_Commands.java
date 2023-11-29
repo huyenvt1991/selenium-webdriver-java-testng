@@ -1,12 +1,12 @@
 package webdriver;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.bidi.log.Log;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -40,11 +40,11 @@ public class Topic_06_WebBrowser_Commands {
         // Muốn dùng được thì phải khởi tạo
         // Nếu không khởi tạo sẽ gặp lỗi: NullPointerException
         // 1 biến chưa được khởi tạo nhưng đã được gọi ra để sử dụng
-        driver = new FirefoxDriver();
+//        driver = new FirefoxDriver();
         driver = new ChromeDriver();
-        driver = new EdgeDriver();
-        driver = new InternetExplorerDriver();
-        driver = new SafariDriver();
+//        driver = new EdgeDriver();
+//        driver = new InternetExplorerDriver();
+//        driver = new SafariDriver();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
@@ -59,6 +59,19 @@ public class Topic_06_WebBrowser_Commands {
         //e - enum
         //a - abstract class
         //@ - annotation
+
+        // Mở ra 1 URL bất kỳ
+        driver.get("https://www.facebook.com/");
+
+        System.out.print("Tab ID = " + driver.getWindowHandle());
+
+        // Nếu như có 1 tab thì tính năng tự quit
+        // Nhiều hơn thì sẽ đóng cái đang active
+        driver.close();
+
+        // Đóng browser (bao nhiêu tab đóng hết)
+        driver.quit();
+
         WebElement emailAddressTextbox = driver.findElement(By.id("email"));
 
         // Không được tìm thấy ==> ko bị fail ==> trả về 1 list rỗng (0 element)
@@ -72,11 +85,56 @@ public class Topic_06_WebBrowser_Commands {
         // Thường dùng để verify 1 cách tương đối
         driver.getPageSource();
 
+        // Lấy ra title của page hiện tại
         driver.getTitle();
+
+        // Lấy ra ID của tab hiện tại
+        // Dùng cho bài Handle Window/Tab
         driver.getWindowHandle();
         driver.getWindowHandles();
 
+        // Dùng cho bài Cookies - Framework
+        driver.manage().getCookies();
 
+        // Get ra những logs ở Dev Tool
+        driver.manage().logs().get(LogType.DRIVER);
+
+        // Apply cho việc tìm element
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+        // Chờ cho page được load xong
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+
+        // Set trước khi dùng vs thư viện JavascriptExecutor
+        // Inject 1 đoạn code JS vào trong Browser/Element
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+
+        // Selenium 4 trở lên mới có - Ít dùng
+        driver.manage().timeouts().getImplicitWaitTimeout();
+        driver.manage().timeouts().getPageLoadTimeout();
+        driver.manage().timeouts().getScriptTimeout();
+
+        // Chạy full màn hình - Tương tự F11 - Ít dùng
+        driver.manage().window().fullscreen();
+
+        // Hay dùng
+        driver.manage().window().maximize();
+        driver.manage().window().minimize();
+
+        // Test giao diện - GUI
+        // Chọn độ phân giải của Browser để chạy - Dùng để test Responsive
+        driver.manage().window().setSize(new Dimension(1366, 768));
+        driver.manage().window().setSize(new Dimension(1920, 1080));
+
+        driver.manage().window().getSize();
+
+        // Set cho Browser ở vị trí nào so với độ phân giải của màn hình (run trên màn hình có kích thước bao nhiêu)
+        driver.manage().window().setPosition(new Point(0, 0));
+        driver.manage().window().getPosition();
+
+        driver.navigate();
+
+        driver.switchTo();
     }
 
     @Test
