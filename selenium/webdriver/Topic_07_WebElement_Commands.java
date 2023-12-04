@@ -54,7 +54,7 @@ public class Topic_07_WebElement_Commands {
 //
         // Trả về nhiều elements khớp vs điều kiện
         List<WebElement> textboxes = driver.findElements(By.cssSelector(""));
-        textboxes.add("");
+        textboxes.add();
 
         // Java non Generic
         ArrayList name = new ArrayList();
@@ -76,6 +76,24 @@ public class Topic_07_WebElement_Commands {
 
         // Dùng để Verify 1 element bất kỳ có hiển thị hay ko?
         Assert.assertFalse(driver.findElement(By.id("")).isDisplayed());
+
+        // Dùng để Verify 1 element có được thao tác lên hay ko? (ko phải read-only)
+        Assert.assertTrue(driver.findElement(By.id("")).isEnabled());
+        Assert.assertFalse(driver.findElement(By.id("")).isEnabled());
+
+        // HTML Element
+        driver.findElement(By.id("")).getAttribute("name");
+
+        // Tab Accesibility/Properties
+        driver.findElement(By.id("")).getAccessibleName();
+        driver.findElement(By.id("")).getDomAttribute("checked");
+        driver.findElement(By.id("")).getDomProperty("baseURI");
+
+        // Tab Styles trong Elements
+        // Font/ Size/ Color/ Background/ ...
+        driver.findElement(By.id("")).getCssValue("background-color");
+
+
 
     }
 
