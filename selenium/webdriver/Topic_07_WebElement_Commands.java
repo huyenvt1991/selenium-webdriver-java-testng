@@ -1,8 +1,6 @@
 package webdriver;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -93,6 +91,28 @@ public class Topic_07_WebElement_Commands {
         // Font/ Size/ Color/ Background/ ...
         driver.findElement(By.id("")).getCssValue("background-color");
 
+        // rbg(46, 138, 184)
+        driver.findElement(By.id("")).getCssValue("font-size");
+        driver.findElement(By.id("")).getCssValue("text-transform");
+
+        // Vị trí của element so vs độ phân giải màn hình
+        Point nameTextboxLocation =  driver.findElement(By.id("")).getLocation();
+        nameTextboxLocation.getX();
+        nameTextboxLocation.getY();
+
+        // Location + Size
+        Rectangle nameTextboxRect = driver.findElement(By.id("")).getRect();
+
+        /// Lấy riêng Location
+        Point namePoint = nameTextboxRect.getPoint();
+
+        /// Lấy riêng Size
+        Dimension nameSize = nameTextboxRect.getDimension();
+        nameSize.getHeight();
+        nameSize.getWidth();
+
+        // Shadow element
+        driver.findElement(By.id("")).getShadowRoot();
 
 
     }
