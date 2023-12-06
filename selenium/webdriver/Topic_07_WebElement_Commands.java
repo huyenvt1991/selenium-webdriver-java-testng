@@ -33,26 +33,26 @@ public class Topic_07_WebElement_Commands {
 
     @Test
     public void TC_01_Element() {
-//        // HTML Element: Textbox/ Text Area/ Dropdown/ Checkbox/ Link/ Button ...
-//        // Tìm chưa tương tác lên
-//        driver.findElement(By.id(""));
-//
-//        // Tìm và tương tác lên
-//        driver.findElement(By.id("")).click();
-//        driver.findElement(By.id("")).sendKeys();
-//
-//        // Tìm và lưu nó vào 1 biến WebElement (chưa tương tác)
-//        // Khi dùng biến này ít nhất từ 2 lần trở lên
-//        WebElement  fullNameTextbox = driver.findElement(By.id(""));
-//        fullNameTextbox.clear();
-//        fullNameTextbox.sendKeys();
-//        fullNameTextbox.getAttribute();
-//
-//        // Những hàm tương tác vs Element luôn luôn là hàm Void
-//
+        // HTML Element: Textbox/ Text Area/ Dropdown/ Checkbox/ Link/ Button ...
+        // Tìm chưa tương tác lên
+        driver.findElement(By.id(""));
+
+        // Tìm và tương tác lên
+        driver.findElement(By.id("")).click(); // **
+        driver.findElement(By.id("")).sendKeys(); // **
+
+        // Tìm và lưu nó vào 1 biến WebElement (chưa tương tác)
+        // Khi dùng biến này ít nhất từ 2 lần trở lên
+        WebElement  fullNameTextbox = driver.findElement(By.id(""));
+        fullNameTextbox.clear();    // **
+        fullNameTextbox.sendKeys();
+        fullNameTextbox.getAttribute("");
+
+        // Những hàm tương tác vs Element luôn luôn là hàm Void
+
         // Trả về nhiều elements khớp vs điều kiện
         List<WebElement> textboxes = driver.findElements(By.cssSelector(""));
-        textboxes.add();
+
 
         // Java non Generic
         ArrayList name = new ArrayList();
@@ -66,30 +66,31 @@ public class Topic_07_WebElement_Commands {
         name.add("Automation FC");
 
         // Dùng để Verify 1 checbox/radio/ dropdown (default) đã được chọn hay chưa?
-        Assert.assertTrue(driver.findElement(By.id("")).isSelected());
+        Assert.assertTrue(driver.findElement(By.id("")).isSelected()); // *
         Assert.assertFalse(driver.findElement(By.id("")).isSelected());
 
         // Dropdown (default/ custom)
         Select select = new Select(driver.findElement(By.id("")));
 
         // Dùng để Verify 1 element bất kỳ có hiển thị hay ko?
-        Assert.assertFalse(driver.findElement(By.id("")).isDisplayed());
+        Assert.assertFalse(driver.findElement(By.id("")).isDisplayed()); // **
 
         // Dùng để Verify 1 element có được thao tác lên hay ko? (ko phải read-only)
-        Assert.assertTrue(driver.findElement(By.id("")).isEnabled());
+        Assert.assertTrue(driver.findElement(By.id("")).isEnabled()); // *
         Assert.assertFalse(driver.findElement(By.id("")).isEnabled());
 
         // HTML Element
-        driver.findElement(By.id("")).getAttribute("name");
+        driver.findElement(By.id("")).getAttribute("name");  // *
 
         // Tab Accesibility/Properties
-        driver.findElement(By.id("")).getAccessibleName();
-        driver.findElement(By.id("")).getDomAttribute("checked");
-        driver.findElement(By.id("")).getDomProperty("baseURI");
+        driver.findElement(By.id("")).getAccessibleName(); // *
+        driver.findElement(By.id("")).getDomAttribute("checked"); // *
+        driver.findElement(By.id("")).getDomProperty("baseURI"); // *
+        driver.findElement(By.id("")).getDomProperty("outerHTML"); // *
 
         // Tab Styles trong Elements
         // Font/ Size/ Color/ Background/ ...
-        driver.findElement(By.id("")).getCssValue("background-color");
+        driver.findElement(By.id("")).getCssValue("background-color"); // *
 
         // rbg(46, 138, 184)
         driver.findElement(By.id("")).getCssValue("font-size");
@@ -99,6 +100,10 @@ public class Topic_07_WebElement_Commands {
         Point nameTextboxLocation =  driver.findElement(By.id("")).getLocation();
         nameTextboxLocation.getX();
         nameTextboxLocation.getY();
+
+        // Chiều cao + rộng
+        Dimension   addressSize = driver.findElement(By.id("")).getSize();
+
 
         // Location + Size
         Rectangle nameTextboxRect = driver.findElement(By.id("")).getRect();
@@ -114,6 +119,23 @@ public class Topic_07_WebElement_Commands {
         // Shadow element
         driver.findElement(By.id("")).getShadowRoot();
 
+        // Từ id/ class/ name/ css/ xpath có thể truy ra ngược lại tagname HTML
+        driver.findElement(By.id("")).getTagName();
+        driver.findElement(By.cssSelector("")).getTagName();
+        driver.findElement(By.className("")).getTagName();
+        driver.findElement(By.xpath("")).getTagName();
+
+        driver.findElement(By.id("")).getText(); // **
+
+        // Chụp hình bị lỗi và lưu dưới dạng BYTE/FILE/BASE64
+        driver.findElement(By.cssSelector("")).getScreenshotAs(OutputType.FILE); // Lưu thành 1 hình có kích thước trong ổ cứng .png/ .jpg/ ...)
+        driver.findElement(By.cssSelector("")).getScreenshotAs(OutputType.BYTES); //
+        driver.findElement(By.cssSelector("")).getScreenshotAs(OutputType.BASE64); // Hình dạng text   // *
+
+        // Form (element nào là thẻ form hoặc nằm trong thẻ form
+        // Hành vi giống phím Enter trên màn hình
+        // Login/ Search/ Register
+        driver.findElement(By.id("")).submit();
 
     }
 

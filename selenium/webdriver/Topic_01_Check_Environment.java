@@ -24,7 +24,7 @@ public class Topic_01_Check_Environment {
         }
 
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
         driver.get("https://www.facebook.com/");
     }
