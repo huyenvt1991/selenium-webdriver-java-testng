@@ -28,6 +28,11 @@ public class Topic_06_WebBrowser_Commands_02 {
     public void TC_01_Page_Url() {
         WebElement myAccounturl_locator = driver.findElement(By.xpath("//div[@class='footer']/div[4]/ul/li[1]/a"));
         myAccounturl_locator.click();
+        // 1000 ms = 1s
+        sleepInSeconds(3);
+
+
+        // Trong 1 class từ 1 hàm có thể gọi qua hàm khác (call function)
 
         String  currentURL = driver.getCurrentUrl();
         String  expectedURL = "http://live.techpanda.org/index.php/customer/account/login/";
@@ -99,5 +104,13 @@ public class Topic_06_WebBrowser_Commands_02 {
     @AfterClass
     public void afterClass() {
         driver.quit();
+    }
+
+    public void sleepInSeconds(long timeInSecond) {
+        try {
+            Thread.sleep(timeInSecond * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
