@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Topic_07_WebElement_Commands {
+public class Topic_07_WebElement_Commands_01 {
     WebDriver driver;
     String projectPath = System.getProperty("user.dir");
     String osName = System.getProperty("os.name");
