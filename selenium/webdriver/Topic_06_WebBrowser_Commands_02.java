@@ -87,13 +87,13 @@ public class Topic_06_WebBrowser_Commands_02 {
         myAccounturl_locator.click();
 
         String loginpageSource = driver.getPageSource();
-        Assert.assertTrue(loginpageSource.contains(" LOGIN OR CREATE AN ACCOUNT "));
+        Assert.assertTrue(loginpageSource.contains("Login or Create an Account"));
 
         WebElement createAnaccountBtn = driver.findElement(By.xpath("//a[@title='Create an Account']"));
         createAnaccountBtn.click();
 
         String registerpageSource = driver.getPageSource();
-        Assert.assertTrue(registerpageSource.contains("CREATE AN ACCOUNT"));
+        Assert.assertTrue(registerpageSource.contains("Create an Account"));
     }
 
     @AfterClass
