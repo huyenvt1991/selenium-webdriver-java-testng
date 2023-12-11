@@ -51,12 +51,14 @@ public class Topic_06_WebBrowser_Commands_02 {
     public void TC_02_Page_Title() {
         WebElement myAccounturl_locator = driver.findElement(By.xpath("//div[@class='footer']/div[4]/ul/li[1]/a"));
         myAccounturl_locator.click();
+        sleepInSeconds(3);
 
         String loginpageTitle = driver.getTitle();
         Assert.assertEquals(loginpageTitle, "Customer Login");
 
         WebElement createAnaccountBtn = driver.findElement(By.xpath("//a[@title='Create an Account']"));
         createAnaccountBtn.click();
+        sleepInSeconds(3);
 
         String registerpageTitle = driver.getTitle();
         Assert.assertEquals(registerpageTitle, "Create New Customer Account");
@@ -66,21 +68,25 @@ public class Topic_06_WebBrowser_Commands_02 {
     public void TC_03_Page_Navigation() {
         WebElement myAccounturl_locator = driver.findElement(By.xpath("//div[@class='footer']/div[4]/ul/li[1]/a"));
         myAccounturl_locator.click();
+        sleepInSeconds(3);
 
         WebElement createAnaccountBtn = driver.findElement(By.xpath("//a[@title='Create an Account']"));
         createAnaccountBtn.click();
+        sleepInSeconds(3);
 
         String  registerpageURL = driver.getCurrentUrl();
         String  expectedURL = "http://live.techpanda.org/index.php/customer/account/create/";
         Assert.assertEquals(registerpageURL, expectedURL);
 
         driver.navigate().back();
+        sleepInSeconds(3);
 
         String  loginpageURL = driver.getCurrentUrl();
         String  expectedURL2 = "http://live.techpanda.org/index.php/customer/account/login/";
         Assert.assertEquals(loginpageURL, expectedURL2);
 
         driver.navigate().forward();
+        sleepInSeconds(3);
 
         String registerpageTitle = driver.getTitle();
         Assert.assertEquals(registerpageTitle, "Create New Customer Account");
@@ -90,12 +96,14 @@ public class Topic_06_WebBrowser_Commands_02 {
     public void TC_04_Page_Source() {
         WebElement myAccounturl_locator = driver.findElement(By.xpath("//div[@class='footer']/div[4]/ul/li[1]/a"));
         myAccounturl_locator.click();
+        sleepInSeconds(3);
 
         String loginpageSource = driver.getPageSource();
         Assert.assertTrue(loginpageSource.contains("Login or Create an Account"));
 
         WebElement createAnaccountBtn = driver.findElement(By.xpath("//a[@title='Create an Account']"));
         createAnaccountBtn.click();
+        sleepInSeconds(3);
 
         String registerpageSource = driver.getPageSource();
         Assert.assertTrue(registerpageSource.contains("Create an Account"));
