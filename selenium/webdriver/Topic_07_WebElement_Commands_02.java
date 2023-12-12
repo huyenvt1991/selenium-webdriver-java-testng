@@ -22,20 +22,34 @@ public class Topic_07_WebElement_Commands_02 {
         driver.get("https://automationfc.github.io/basic-form/index.html");
     }
 
+    WebElement  emailField = driver.findElement(By.id("email"));
+    WebElement  ageUnder18_radioBtn = driver.findElement(By.id("under_18"));
+    WebElement  educationField = driver.findElement(By.id("under_18"));
+    WebElement  jobRole01_dropDown = driver.findElement(By.id("job1"));
+    WebElement  jobRole02_dropDown = driver.findElement(By.id("job2"));
+
     @Test
     public void TC_01_Displayed() {
-        WebElement  emailField = driver.findElement(By.id("email"));
         Assert.assertTrue(emailField.isDisplayed());
+        emailField.sendKeys("Automation Testing");
 
-        WebElement  ageUnder18_radioBtn = driver.findElement(By.id("under_18"));
         Assert.assertTrue(ageUnder18_radioBtn.isDisplayed());
+        ageUnder18_radioBtn.click();
 
-        WebElement  educationField = driver.findElement(By.id("under_18"));
         Assert.assertTrue(educationField.isDisplayed());
+        educationField.sendKeys("Automation Testing");
+
+        Assert.assertFalse(driver.findElement(By.xpath("//h5[text()='Name: User5']")).isDisplayed());
+        System.out.println("Element is not displayed");
     }
 
     @Test
     public void TC_02_Enabled() {
+        Assert.assertTrue(emailField.isEnabled());
+
+        Assert.assertTrue(ageUnder18_radioBtn.isEnabled());
+
+        Assert.assertTrue(educationField.isEnabled());
 
     }
 
