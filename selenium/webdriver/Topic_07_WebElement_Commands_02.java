@@ -27,11 +27,23 @@ public class Topic_07_WebElement_Commands_02 {
     WebElement  educationField = driver.findElement(By.id("under_18"));
     WebElement  jobRole01_dropDown = driver.findElement(By.id("job1"));
     WebElement  jobRole02_dropDown = driver.findElement(By.id("job2"));
+    WebElement  development_checkbox = driver.findElement(By.id("development"));
+    WebElement  slider01 = driver.findElement(By.id("slider-1"));
+    WebElement  passwordField = driver.findElement(By.id("disable_password"));
+    WebElement  age_disabledRadio = driver.findElement(By.id("radio-disabled"));
+    WebElement  jobRole03_dropDown = driver.findElement(By.id("job3"));
+    WebElement  interests_disabledCheckbox = driver.findElement(By.id("check-disbaled"));
+    WebElement  slider02 = driver.findElement(By.id("slider-2"));
+
+
 
     @Test
     public void TC_01_Displayed() {
+        if (Assert.assertTrue(emailField.isDisplayed())) {
+            emailField.sendKeys("Automation Testing");
+        }
+
         Assert.assertTrue(emailField.isDisplayed());
-        emailField.sendKeys("Automation Testing");
 
         Assert.assertTrue(ageUnder18_radioBtn.isDisplayed());
         ageUnder18_radioBtn.click();
@@ -46,10 +58,22 @@ public class Topic_07_WebElement_Commands_02 {
     @Test
     public void TC_02_Enabled() {
         Assert.assertTrue(emailField.isEnabled());
-
         Assert.assertTrue(ageUnder18_radioBtn.isEnabled());
-
         Assert.assertTrue(educationField.isEnabled());
+        Assert.assertTrue(jobRole01_dropDown.isEnabled());
+        Assert.assertTrue(jobRole02_dropDown.isEnabled());
+        Assert.assertTrue(development_checkbox.isEnabled());
+        Assert.assertTrue(slider01.isEnabled());
+        Assert.assertFalse(passwordField.isEnabled());
+        Assert.assertFalse(age_disabledRadio.isEnabled());
+        Assert.assertFalse(jobRole03_dropDown.isEnabled());
+        Assert.assertFalse(interests_disabledCheckbox.isEnabled());
+        Assert.assertFalse(slider02.isEnabled());
+
+
+
+
+
 
     }
 
