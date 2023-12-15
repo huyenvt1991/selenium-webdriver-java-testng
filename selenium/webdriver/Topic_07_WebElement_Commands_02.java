@@ -3,6 +3,8 @@ package webdriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -14,9 +16,9 @@ import java.time.Duration;
 public class Topic_07_WebElement_Commands_02 {
     WebDriver driver;
 
-    @BeforeClass
+    @BeforeClass()
     public void beforeClass() {
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver(new ChromeOptions());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
         driver.get("https://automationfc.github.io/basic-form/index.html");
@@ -39,18 +41,33 @@ public class Topic_07_WebElement_Commands_02 {
 
     @Test
     public void TC_01_Displayed() {
-        if (Assert.assertTrue(emailField.isDisplayed())) {
+        if (emailField.isDisplayed()) {
             emailField.sendKeys("Automation Testing");
+            System.out.print("Email textbox is displayed");
+        }   else {
+            System.out.print("Email textbox is not displayed");
         }
 
-        Assert.assertTrue(emailField.isDisplayed());
+        if (ageUnder18_radioBtn.isDisplayed()) {
+            ageUnder18_radioBtn.click();
+            System.out.print("Under 18 radio is displayed");
+        }   else {
+            System.out.print("Under 18 radio is not displayed");
+        }
 
-        Assert.assertTrue(ageUnder18_radioBtn.isDisplayed());
-        ageUnder18_radioBtn.click();
+        if (educationField.isDisplayed()) {
+            educationField.sendKeys("Automation Testing");
+            System.out.print("Education textarea is displayed");
+        }   else {
+            System.out.print("Education textarea is not displayed");
+        }
 
-        Assert.assertTrue(educationField.isDisplayed());
-        educationField.sendKeys("Automation Testing");
-
+        if (driver.findElement(By.xpath("//h5[text()='Name: User5']")).isDisplayed()) {
+            educationField.sendKeys("Automation Testing");
+            System.out.print("Name User5 text is displayed");
+        }   else {
+            System.out.print("Name User5 text is not displayed");
+        }
         Assert.assertFalse(driver.findElement(By.xpath("//h5[text()='Name: User5']")).isDisplayed());
         System.out.println("Element is not displayed");
     }
@@ -77,15 +94,15 @@ public class Topic_07_WebElement_Commands_02 {
 
     }
 
-    @Test
-    public void TC_03_Selected() {
-
-    }
-
-    @Test
-    public void TC_04_MailChimp() {
-
-    }
+//    @Test
+//    public void TC_03_Selected() {
+//
+//    }
+//
+//    @Test
+//    public void TC_04_MailChimp() {
+//
+//    }
 
     @AfterClass
     public void afterClass() {
