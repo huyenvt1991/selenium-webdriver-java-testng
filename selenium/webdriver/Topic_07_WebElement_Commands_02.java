@@ -45,20 +45,22 @@ public class Topic_07_WebElement_Commands_02 {
         driver = new ChromeDriver(new ChromeOptions());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
+        driver.get("https://login.mailchimp.com/signup");
+        sleepInSeconds(3);
 
         emailField = driver.findElement(By.id("email"));
-        ageUnder18_radioBtn = driver.findElement(By.id("under_18"));
-        educationField = driver.findElement(By.id("under_18"));
-        jobRole01_dropDown = driver.findElement(By.id("job1"));
-        jobRole02_dropDown = driver.findElement(By.id("job2"));
-        development_checkbox = driver.findElement(By.id("development"));
-        slider01 = driver.findElement(By.id("slider-1"));
-        passwordField = driver.findElement(By.id("disable_password"));
-        age_disabledRadio = driver.findElement(By.id("radio-disabled"));
-        jobRole03_dropDown = driver.findElement(By.id("job3"));
-        interests_disabledCheckbox = driver.findElement(By.id("check-disbaled"));
-        slider02 = driver.findElement(By.id("slider-2"));
-        language_java_checkbox = driver.findElement(By.id("java"));
+//        ageUnder18_radioBtn = driver.findElement(By.id("under_18"));
+//        educationField = driver.findElement(By.id("under_18"));
+//        jobRole01_dropDown = driver.findElement(By.id("job1"));
+//        jobRole02_dropDown = driver.findElement(By.id("job2"));
+//        development_checkbox = driver.findElement(By.id("development"));
+//        slider01 = driver.findElement(By.id("slider-1"));
+//        passwordField = driver.findElement(By.id("disable_password"));
+//        age_disabledRadio = driver.findElement(By.id("radio-disabled"));
+//        jobRole03_dropDown = driver.findElement(By.id("job3"));
+//        interests_disabledCheckbox = driver.findElement(By.id("check-disbaled"));
+//        slider02 = driver.findElement(By.id("slider-2"));
+//        language_java_checkbox = driver.findElement(By.id("java"));
         mailchimp_passwordField = driver.findElement(By.id("new_password"));
     }
 
@@ -139,8 +141,6 @@ public class Topic_07_WebElement_Commands_02 {
 
     @Test
     public void TC_04_MailChimp() {
-        driver.get("https://login.mailchimp.com/signup/");
-        sleepInSeconds(3);
 
         emailField.sendKeys("minhha1.bhsoft@gmail.com");
         sleepInSeconds(2);
@@ -193,7 +193,7 @@ public class Topic_07_WebElement_Commands_02 {
         Assert.assertTrue(helperText_lowercase_notCompleted.isDisplayed());
         Assert.assertTrue(helperText_uppercase_completed.isDisplayed());
         Assert.assertTrue(helperText_number_notCompleted.isDisplayed());
-        WebElement helperText_special_completed = driver.findElement(By.cssSelector("li[class='8-char completed"));
+        WebElement helperText_special_completed = driver.findElement(By.cssSelector("li[class='special-char completed"));
         Assert.assertTrue(helperText_special_completed.isDisplayed());
         Assert.assertTrue(helperText_maxLength_notCompleted.isDisplayed());
 
@@ -222,8 +222,8 @@ public class Topic_07_WebElement_Commands_02 {
     }
 
 
-    @AfterClass
-    public void afterClass() {
-        driver.quit();
-    }
+//    @AfterClass
+//    public void afterClass() {
+//        driver.quit();
+//    }
 }
