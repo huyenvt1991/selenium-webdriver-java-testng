@@ -74,6 +74,13 @@ public class Topic_07_WebElement_Commands_02 {
 
     @Test
     public void TC_02_Enabled() {
+
+        if (emailField.isEnabled()) {
+            System.out.print("Email textarea is enabled");
+        }   else {
+            System.out.print("Email textarea is not enabled");
+        }
+
         Assert.assertTrue(emailField.isEnabled());
         Assert.assertTrue(ageUnder18_radioBtn.isEnabled());
         Assert.assertTrue(educationField.isEnabled());
