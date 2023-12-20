@@ -25,6 +25,9 @@ public class Topic_08_Textbox_Textarea {
         }
     }
 
+    String firstName_text = "Minh";
+    String lastName_text = "Hoang";
+    String password_text = "123456";
     WebElement myAccount_link;
     WebElement email_field;
     WebElement password_field;
@@ -34,6 +37,7 @@ public class Topic_08_Textbox_Textarea {
     WebElement invalidEmail_errorMsg;
     WebElement lessThan6characters_errorMsg;
     WebElement invalidLoginorPassword_errorMsg;
+    WebElement createAnaccount_btn;
 
     @BeforeClass
     public void beforeClass() {
@@ -105,9 +109,43 @@ public class Topic_08_Textbox_Textarea {
         this.login_btn.click();
         sleepInSeconds(2);
 
-        this.invalidLoginorPassword_errorMsg = driver.findElement(By.id(""));
+        this.invalidLoginorPassword_errorMsg = driver.findElement(By.xpath("//ul[@class='messages']/li/ul/li/span"));
         Assert.assertTrue(this.invalidLoginorPassword_errorMsg.isDisplayed());
-        Assert.assertEquals(this.invalidLoginorPassword_errorMsg.getText(), "sdsadasdasd");
+        Assert.assertEquals(this.invalidLoginorPassword_errorMsg.getText(), "Invalid login or password.");
+
+    }
+
+    @Test
+    public void TC_05_Sucess() {
+        // 1 - Đăng kí trước bằng tay (Manual) 1 tài khoản email rồi dùng nó để login cho case này
+        // Khi hệ thống bị reset dữ liệu là phải đăng kí lại
+        // DB bị xóa data
+        // Qua 1 môi trường mới phải đăng kí lại
+        // ==> Không nên làm
+
+        // 2 - Sẽ dùng tính năng Register trước - email cố định không thay đổi
+        // Chức năng Register cũng auto
+        // Email khi dùng đăng kí lại fix cứng (1 lần) ==> Hard code
+
+        // 3 - Sẽ dùng tính năng Register trước - email không cố định (random)
+        // Chạy luôn đúng cho tất cả các case
+
+        this.createAnaccount_btn = driver.findElement(By.xpath("//a[@class='button' and @title='Create an Account']"));
+        this.createAnaccount_btn.click();
+        sleepInSeconds(2);
+
+        WebElement firstName_field = driver.findElement(By.id("firstname"));
+        WebElement lastName_field = driver.findElement(By.id("lastname"));
+        WebElement email_field = driver.findElement(By.id("email_address"));
+        WebElement password_field = driver.findElement(By.id("password"));
+        WebElement confirmPassword_field = driver.findElement(By.id("confirmation"));
+        WebElement register_btn = driver.findElement(By.xpath("//button[@class='button' and @title='Register']"));
+
+        firstName_field.sendKeys(this.firstName_text);
+
+        sleepInSeconds(2);
+
+
 
     }
     @AfterClass
