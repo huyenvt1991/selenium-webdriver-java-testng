@@ -130,6 +130,7 @@ public class Topic_08_Textbox_Textarea {
         // 3 - Sẽ dùng tính năng Register trước - email không cố định (random)
         // Chạy luôn đúng cho tất cả các case
 
+        // Đăng ký 1 tài khooản trước
         this.createAnaccount_btn = driver.findElement(By.xpath("//a[@class='button' and @title='Create an Account']"));
         this.createAnaccount_btn.click();
         sleepInSeconds(2);
@@ -142,10 +143,15 @@ public class Topic_08_Textbox_Textarea {
         WebElement register_btn = driver.findElement(By.xpath("//button[@class='button' and @title='Register']"));
 
         firstName_field.sendKeys(this.firstName_text);
+        lastName_field.sendKeys(this.lastName_text);
 
+        email_field.sendKeys();
+        password_field.sendKeys(this.password_text);
+        confirmPassword_field.sendKeys(this.password_text);
+        register_btn.click();
         sleepInSeconds(2);
 
-
+        // Login
 
     }
     @AfterClass
