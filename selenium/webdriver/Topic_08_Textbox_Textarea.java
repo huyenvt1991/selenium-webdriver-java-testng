@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.Random;
 
 public class Topic_08_Textbox_Textarea {
     WebDriver driver;
@@ -25,9 +26,16 @@ public class Topic_08_Textbox_Textarea {
         }
     }
 
+    public String getEmailAddress() {
+        Random random = new Random();
+        return "automation" + random.nextInt(99999) + "@gmail.com";
+    }
+
     String firstName_text = "Minh";
     String lastName_text = "Hoang";
     String password_text = "123456";
+    String emailAddress_text = getEmailAddress();
+
     WebElement myAccount_link;
     WebElement email_field;
     WebElement password_field;
@@ -145,7 +153,7 @@ public class Topic_08_Textbox_Textarea {
         firstName_field.sendKeys(this.firstName_text);
         lastName_field.sendKeys(this.lastName_text);
 
-        email_field.sendKeys();
+        email_field.sendKeys(emailAddress_text);
         password_field.sendKeys(this.password_text);
         confirmPassword_field.sendKeys(this.password_text);
         register_btn.click();

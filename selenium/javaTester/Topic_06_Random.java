@@ -9,6 +9,6 @@ public class Topic_06_Random {
 
     public static void main(String[] args) {
         Random random = new Random();
-        System.out.println(random.nextInt(99999));
+        random.nextInt(99999);
     }
 }
