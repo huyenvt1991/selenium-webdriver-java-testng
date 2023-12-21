@@ -160,6 +160,11 @@ public class Topic_08_Textbox_Textarea {
         sleepInSeconds(2);
 
         // Login
+        String fullName_text = this.firstName_text + " " + this.lastName_text;
+
+        Assert.assertEquals(driver.findElement(By.cssSelector("li.success-msg span")).getText(), "Thank you for registering with Main Website Store.");
+        Assert.assertEquals(driver.findElement(By.cssSelector("div.welcome-msg strong")).getText(), "Hello, " + fullName_text + "!");
+
 
     }
     @AfterClass
