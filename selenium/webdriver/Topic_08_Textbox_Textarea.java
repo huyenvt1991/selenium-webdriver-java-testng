@@ -164,11 +164,25 @@ public class Topic_08_Textbox_Textarea {
 
         Assert.assertEquals(driver.findElement(By.cssSelector("li.success-msg span")).getText(), "Thank you for registering with Main Website Store.");
         Assert.assertEquals(driver.findElement(By.cssSelector("div.welcome-msg strong")).getText(), "Hello, " + fullName_text + "!");
+        String contactInfo = driver.findElement(By.xpath("//h3[text()='Contact Information']/ancestor::div[2]/div[2]/p")).getText();
+
+        Assert.assertTrue(contactInfo.contains(fullName_text));
+        Assert.assertTrue(contactInfo.contains(emailAddress_text));
+
+        WebElement account = driver.findElement(By.cssSelector("a[class='skip-link skip-account skip-active']"));
+        account.click();
+
+        WebElement logOut_btn = driver.findElement(By.cssSelector("a[title='Log Out']"));
+        logOut_btn.click();
+        sleepInSeconds(2);
+
+        myAccount_link.click();
+        sleepInSeconds(2);
 
 
     }
-    @AfterClass
-    public void afterClass() {
-        driver.quit();
-    }
+//    @AfterClass
+//    public void afterClass() {
+//        driver.quit();
+//    }
 }
