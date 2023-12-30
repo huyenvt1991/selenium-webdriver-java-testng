@@ -169,15 +169,22 @@ public class Topic_08_Textbox_Textarea {
         Assert.assertTrue(contactInfo.contains(fullName_text));
         Assert.assertTrue(contactInfo.contains(emailAddress_text));
 
-        WebElement account = driver.findElement(By.cssSelector("a[class='skip-link skip-account skip-active']"));
+        driver.findElement(By.xpath("//a[text()='Account Information']")).click();
+        sleepInSeconds(2);
+
+        Assert.assertEquals(driver.findElement(By.id("firstname")).getAttribute("value"), this.firstName_text);
+        Assert.assertEquals(driver.findElement(By.id("lastname")).getAttribute("value"), this.lastName_text);
+        Assert.assertEquals(driver.findElement(By.id("email")).getAttribute("value"), this.emailAddress_text);
+
+        WebElement account = driver.findElement(By.cssSelector("a[class='skip-link skip-account']"));
         account.click();
 
         WebElement logOut_btn = driver.findElement(By.cssSelector("a[title='Log Out']"));
         logOut_btn.click();
         sleepInSeconds(2);
-
-        myAccount_link.click();
-        sleepInSeconds(2);
+//
+//        myAccount_link.click();
+//        sleepInSeconds(2);
 
 
     }
