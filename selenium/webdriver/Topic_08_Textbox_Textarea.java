@@ -28,7 +28,7 @@ public class Topic_08_Textbox_Textarea {
 
     public String getEmailAddress() {
         Random random = new Random();
-        return "automation" + random.nextInt(99999) + "@gmail.com";
+        return "minhha" + random.nextInt(99999) + "@gmail.com";
     }
 
     String firstName_text = "Minh";
@@ -124,7 +124,7 @@ public class Topic_08_Textbox_Textarea {
     }
 
     @Test
-    public void TC_05_Sucess() {
+    public void TC_05_Success() {
         // 1 - Đăng kí trước bằng tay (Manual) 1 tài khoản email rồi dùng nó để login cho case này
         // Khi hệ thống bị reset dữ liệu là phải đăng kí lại
         // DB bị xóa data
