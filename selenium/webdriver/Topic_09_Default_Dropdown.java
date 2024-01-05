@@ -2,6 +2,8 @@ package webdriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -10,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Random;
 
 public class Topic_09_Default_Dropdown {
@@ -17,7 +20,7 @@ public class Topic_09_Default_Dropdown {
 
     @BeforeClass
     public void beforeClass() {
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
         driver.get("https://demo.nopcommerce.com/");
@@ -51,16 +54,21 @@ public class Topic_09_Default_Dropdown {
         Select day_dropdown = new Select(driver.findElement(By.name("DateOfBirthDay")));
         day_dropdown.selectByVisibleText("21");
         Assert.assertFalse(day_dropdown.isMultiple());
-        Assert.assertEquals(day_dropdown.getOptions(), 32);
+        List<WebElement> dayOptions = day_dropdown.getOptions();
+        Assert.assertEquals(dayOptions.size(), 32);
 
         Select month_dropdown = new Select(driver.findElement(By.name("DateOfBirthMonth")));
         month_dropdown.selectByVisibleText("January");
         Assert.assertFalse(month_dropdown.isMultiple());
-        Assert.assertEquals(day_dropdown.getOptions(), 32);
+        List<WebElement> monthOptions = month_dropdown.getOptions();
+        Assert.assertEquals(monthOptions.size(), 13);
 
         Select year_dropdown = new Select(driver.findElement(By.name("DateOfBirthYear")));
-        year_dropdown.selectByVisibleText("1996");
         Assert.assertFalse(year_dropdown.isMultiple());
+        List<WebElement> yearOptions = year_dropdown.getOptions();
+        Assert.assertEquals(yearOptions.size(), 112);
+        year_dropdown.selectByVisibleText("1996");
+
 
 //        new Select(driver.findElement(By.name("DateOfBirthDay"))).selectByVisibleText("21");
 //        new Select(driver.findElement(By.name("DateOfBirthMonth"))).selectByVisibleText("January");
@@ -73,6 +81,7 @@ public class Topic_09_Default_Dropdown {
         driver.findElement(By.id("register-button")).click();
         sleepInSeconds(3);
 
+//        Assert.assertTrue(driver.findElement());
     }
 
     @Test
@@ -80,8 +89,8 @@ public class Topic_09_Default_Dropdown {
 
     }
 
-    @AfterClass
-    public void afterClass() {
-        driver.quit();
-    }
+//    @AfterClass
+//    public void afterClass() {
+//        driver.quit();
+//    }
 }
